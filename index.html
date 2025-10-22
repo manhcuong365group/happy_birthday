@@ -7,9 +7,6 @@
     <title>Chúc Mừng Sinh Nhật Trần Tường Vi 🎉</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
     <style>
         * {
             margin: 0;
@@ -753,28 +750,8 @@
     </div>
 
     <script>
-        // ============ FIREBASE CONFIG ============
-        const firebaseConfig = {
-            apiKey: "AIzaSyAJ7nObh30G2Hd--mSzUDWUiwtWyZseXAY",
-            authDomain: "happy-birthday-2bcc7.firebaseapp.com",
-            databaseURL: "https://happy-birthday-2bcc7-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "happy-birthday-2bcc7",
-            storageBucket: "happy-birthday-2bcc7.firebasestorage.app",
-            messagingSenderId: "241314367880",
-            appId: "1:241314367880:web:69e3a25337c7d66213123d",
-            measurementId: "G-P2FTLG33C6"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+        // ============ DECLARE GLOBAL VARIABLES ============
         let database = null;
-
-        // Wait for Firebase to be ready
-        firebase.database.enableLogging(false);
-        setTimeout(() => {
-            database = firebase.database();
-            console.log('Firebase initialized successfully');
-        }, 500);
 
         // Create confetti effect - IMPROVED
         function createConfetti() {
@@ -1328,6 +1305,31 @@
         }, 500);
 
         // Load guestbook messages from Firebase
+        displayGuestMessages();
+    </script>
+
+    <!-- Firebase SDK - Load at the end -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
+    <script>
+        // Firebase initialization code
+        const firebaseConfig = {
+            apiKey: "AIzaSyAJ7nObh30G2Hd--mSzUDWUiwtWyZseXAY",
+            authDomain: "happy-birthday-2bcc7.firebaseapp.com",
+            databaseURL: "https://happy-birthday-2bcc7-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "happy-birthday-2bcc7",
+            storageBucket: "happy-birthday-2bcc7.firebasestorage.app",
+            messagingSenderId: "241314367880",
+            appId: "1:241314367880:web:69e3a25337c7d66213123d",
+            measurementId: "G-P2FTLG33C6"
+        };
+
+        // Initialize Firebase after SDK loads
+        firebase.initializeApp(firebaseConfig);
+        database = firebase.database();
+        console.log('✅ Firebase initialized!');
+
+        // Load guestbook after Firebase is ready
         displayGuestMessages();
     </script>
 </body>
