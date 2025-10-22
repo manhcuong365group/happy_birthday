@@ -528,6 +528,31 @@
             transform: scale(1.05);
         }
 
+        /* Guestbook Styles */
+        #guestbookMessages {
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        #guestbookMessages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #guestbookMessages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        #guestbookMessages::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+
+        #guestbookMessages::-webkit-scrollbar-thumb:hover {
+            background: #764ba2;
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 30px 20px;
@@ -643,62 +668,56 @@
 
         <!-- Action Buttons -->
         <div class="flex flex-wrap justify-center gap-4 my-8">
-            <button onclick="createConfetti()" class="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+            <button onclick="createConfetti()"
+                class="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
                 <i class="fas fa-fire"></i> 🎆 Pháo Hoa!
             </button>
-            <button onclick="playMusic()" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+            <button onclick="playMusic()"
+                class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
                 <i class="fas fa-music"></i> 🎵 Nhạc Vui
             </button>
-            <button onclick="generateWish()" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+            <button onclick="generateWish()"
+                class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
                 <i class="fas fa-heart"></i> 💌 Lời Chúc
             </button>
         </div>
 
         <!-- Extra Effects Buttons -->
         <div class="flex flex-wrap justify-center gap-4 my-8">
-            <button onclick="createParticleBurst(event)" class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+            <button onclick="createParticleBurst(event)"
+                class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
                 <i class="fas fa-star"></i> ✨ Particle Burst
             </button>
-            <button onclick="createFloatingStars()" class="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+            <button onclick="createFloatingStars()"
+                class="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
                 <i class="fas fa-stars"></i> 🌟 Floating Stars
             </button>
-            <button onclick="createFireworks()" class="bg-gradient-to-r from-indigo-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+            <button onclick="createFireworks()"
+                class="bg-gradient-to-r from-indigo-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
                 <i class="fas fa-burst"></i> 💥 Fireworks
             </button>
         </div>
 
-        <!-- Photo Album Section -->
+        <!-- Guestbook Section -->
         <div class="wishes-section">
-            <h3>📸 Album Ảnh Kỷ Niệm 📸</h3>
+            <h3>� Sổ Lưu Bút Chúc Mừng �</h3>
+            
+            <!-- Input area for new message -->
+            <div class="mt-6 mb-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <input type="text" id="guestName" placeholder="Tên của bạn 💕" class="w-full p-3 border-2 border-purple-300 rounded-lg mb-3 focus:outline-none focus:border-purple-600" maxlength="50">
+                    <textarea id="guestMessage" placeholder="Viết lời chúc cho Trần Tường Vi ✨" class="w-full p-3 border-2 border-purple-300 rounded-lg mb-3 focus:outline-none focus:border-purple-600 resize-none" rows="3" maxlength="150"></textarea>
+                    <button onclick="addGuestMessage()" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-2 px-4 rounded-lg transform hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-heart"></i> Ghi Vào Sổ
+                    </button>
+                </div>
+            </div>
 
-            <!-- Default photos -->
+            <!-- Messages display -->
             <div class="mt-6">
-                <h4 class="text-lg font-bold text-gray-700 mb-4">✨ Những Ảnh Đẹp</h4>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
-                        <div class="bg-gradient-to-br from-pink-400 to-red-400 w-full h-40 flex items-center justify-center text-5xl">🎂</div>
-                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Bánh Sinh Nhật</p>
-                    </div>
-                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
-                        <div class="bg-gradient-to-br from-purple-400 to-pink-400 w-full h-40 flex items-center justify-center text-5xl">🎉</div>
-                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Tiệc Vui</p>
-                    </div>
-                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
-                        <div class="bg-gradient-to-br from-blue-400 to-purple-400 w-full h-40 flex items-center justify-center text-5xl">🌹</div>
-                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Hoa Tặng</p>
-                    </div>
-                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
-                        <div class="bg-gradient-to-br from-yellow-400 to-orange-400 w-full h-40 flex items-center justify-center text-5xl">🎁</div>
-                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Quà Tặng</p>
-                    </div>
-                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
-                        <div class="bg-gradient-to-br from-green-400 to-blue-400 w-full h-40 flex items-center justify-center text-5xl">✨</div>
-                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Kỷ Niệm</p>
-                    </div>
-                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
-                        <div class="bg-gradient-to-br from-red-400 to-pink-400 w-full h-40 flex items-center justify-center text-5xl">💝</div>
-                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Tình Yêu</p>
-                    </div>
+                <h4 class="text-lg font-bold text-gray-700 mb-4">💬 Những Lời Chúc Từ Bạn Bè</h4>
+                <div id="guestbookMessages" class="space-y-3">
+                    <!-- Messages will be added here -->
                 </div>
             </div>
         </div>
@@ -765,7 +784,7 @@
 
         // Play birthday song - HAPPY BIRTHDAY
         function playMusic() {
-            const audioContext = new(window.AudioContext || window.webkitAudioContext)();
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
             // Bài hát "Happy Birthday" - Giai điệu đầy đủ
             const notes = [
@@ -924,7 +943,7 @@
         }
 
         // Click outside modal to close
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             const modal = document.getElementById('wishModal');
             if (event.target === modal) {
                 modal.style.display = 'none';
@@ -1086,6 +1105,79 @@
 
         let cursorTrailActive = false;
 
+        // ============ GUESTBOOK ============
+        let guestMessages = [];
+
+        function addGuestMessage() {
+            const name = document.getElementById('guestName').value.trim();
+            const message = document.getElementById('guestMessage').value.trim();
+
+            if (name === '' || message === '') {
+                alert('Vui lòng điền tên và lời chúc! 💕');
+                return;
+            }
+
+            // Create message object
+            const guestMessage = {
+                name: name,
+                message: message,
+                time: new Date().toLocaleString('vi-VN')
+            };
+
+            // Add to array
+            guestMessages.unshift(guestMessage);
+
+            // Save to localStorage
+            localStorage.setItem('guestMessages', JSON.stringify(guestMessages));
+
+            // Clear inputs
+            document.getElementById('guestName').value = '';
+            document.getElementById('guestMessage').value = '';
+
+            // Refresh display
+            displayGuestMessages();
+
+            // Confetti effect
+            createConfetti();
+            alert('✨ Cảm ơn bạn đã ghi lời chúc! ✨');
+        }
+
+        function displayGuestMessages() {
+            const container = document.getElementById('guestbookMessages');
+            container.innerHTML = '';
+
+            if (guestMessages.length === 0) {
+                container.innerHTML = '<p class="text-center text-gray-500 py-6">Chưa có lời chúc nào. Hãy là người đầu tiên! 💫</p>';
+                return;
+            }
+
+            guestMessages.forEach((msg, index) => {
+                const msgElement = document.createElement('div');
+                msgElement.className = 'bg-white p-4 rounded-lg shadow-md border-l-4 border-pink-400 hover:shadow-lg transition-all duration-300';
+                msgElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <p class="font-bold text-purple-600 text-lg">👤 ${msg.name}</p>
+                            <p class="text-xs text-gray-500">${msg.time}</p>
+                        </div>
+                        <button onclick="deleteGuestMessage(${index})" class="text-red-500 hover:text-red-700 text-sm" title="Xóa">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <p class="text-gray-700 italic">"${msg.message}"</p>
+                `;
+                container.appendChild(msgElement);
+            });
+        }
+
+        function deleteGuestMessage(index) {
+            if (confirm('Bạn chắc chắn muốn xóa lời chúc này?')) {
+                guestMessages.splice(index, 1);
+                localStorage.setItem('guestMessages', JSON.stringify(guestMessages));
+                displayGuestMessages();
+            }
+        }
+
         // ============ CURSOR TRAIL ============
         function toggleCursorTrail() {
             cursorTrailActive = !cursorTrailActive;
@@ -1135,7 +1227,7 @@
         }, 1900);
 
         // Auto play music on page load
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             setTimeout(() => {
                 playMusic();
             }, 1500);
@@ -1153,6 +1245,13 @@
         bgParticleInterval = setInterval(() => {
             createBgParticle();
         }, 500);
+
+        // Load guestbook messages from localStorage
+        const savedMessages = localStorage.getItem('guestMessages');
+        if (savedMessages) {
+            guestMessages = JSON.parse(savedMessages);
+        }
+        displayGuestMessages();
     </script>
 </body>
 
