@@ -767,7 +767,14 @@
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+        let database = null;
+
+        // Wait for Firebase to be ready
+        firebase.database.enableLogging(false);
+        setTimeout(() => {
+            database = firebase.database();
+            console.log('Firebase initialized successfully');
+        }, 500);
 
         // Create confetti effect - IMPROVED
         function createConfetti() {
@@ -1133,6 +1140,12 @@
         let guestMessages = [];
 
         function addGuestMessage() {
+            // Check if Firebase is ready
+            if (!database) {
+                alert('⏳ Đang khởi tạo... Vui lòng chờ 1 giây rồi thử lại!');
+                return;
+            }
+
             const name = document.getElementById('guestName').value.trim();
             const message = document.getElementById('guestMessage').value.trim();
 
@@ -1165,6 +1178,14 @@
 
         function displayGuestMessages() {
             const container = document.getElementById('guestbookMessages');
+
+            // Check if Firebase is ready
+            if (!database) {
+                container.innerHTML = '<p class="text-center text-gray-500 py-6">⏳ Đang khởi tạo Firebase...</p>';
+                setTimeout(displayGuestMessages, 1000);
+                return;
+            }
+
             container.innerHTML = '<p class="text-center text-gray-500 py-6">⏳ Đang tải lời chúc...</p>';
 
             // Read from Firebase
@@ -1205,6 +1226,11 @@
         }
 
         function deleteGuestMessage(messageId) {
+            if (!database) {
+                alert('⏳ Firebase chưa sẵn sàng!');
+                return;
+            }
+
             if (confirm('Bạn chắc chắn muốn xóa lời chúc này?')) {
                 database.ref('guestbook').child(messageId).remove().then(() => {
                     alert('✓ Đã xóa lời chúc');
