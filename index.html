@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật Trần Tường Vi 🎉</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #ff69b4;
+            pointer-events: none;
+            animation: confettiFall 3s ease-in forwards;
+            z-index: 999;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Particle Burst */
+        .particle-burst {
+            position: fixed;
+            pointer-events: none;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: burst-out 1.5s ease-out forwards;
+            z-index: 999;
+        }
+
+        @keyframes burst-out {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0);
+            }
+        }
+
+        /* Floating Stars */
+        .floating-star {
+            position: fixed;
+            pointer-events: none;
+            font-size: 24px;
+            animation: star-float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+        }
+
+        @keyframes star-float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Fireworks */
+        .firework {
+            position: fixed;
+            pointer-events: none;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: firework-burst 1.8s ease-out forwards;
+            z-index: 999;
+        }
+
+        @keyframes firework-burst {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0);
+            }
+        }
+
+        /* Background Particles */
+        .bg-particle {
+            position: fixed;
+            pointer-events: none;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #FFD700, rgba(255, 215, 0, 0.3));
+            animation: float-particle 15s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(var(--tx), var(--ty));
+            }
+        }
+
+        /* Cursor Trail */
+        .cursor-trail {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            animation: trail-fade 1s ease-out forwards;
+            z-index: 998;
+        }
+
+        @keyframes trail-fade {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+        }
+
+        .container {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 800px !important;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .name {
+            font-size: 2.5em;
+            color: #764ba2;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .emoji-celebration {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .messages {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(253, 203, 110, 0.3);
+        }
+
+        .messages h2 {
+            color: #d63031;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .message-item {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.6;
+            animation: slideInLeft 0.6s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .countdown {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .countdown h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            min-width: 100px;
+        }
+
+        .time-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .time-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        .gallery {
+            margin: 30px 0;
+        }
+
+        .gallery h3 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            margin: 20px 0;
+        }
+
+        .emoji-item {
+            font-size: 4em;
+            text-align: center;
+            animation: bounce 1s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .emoji-item:hover {
+            transform: scale(1.3);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+        }
+
+        .wishes-section {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .wishes-section h3 {
+            color: #d63031;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .wish {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            border-top: 4px solid #667eea;
+            font-style: italic;
+            color: #555;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Modal Popup Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 30px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: slideDown 0.4s ease-out;
+            color: white;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-btn {
+            color: white;
+            float: right;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.3);
+        }
+
+        .wish-text {
+            font-size: 2em;
+            margin: 30px 0;
+            font-weight: bold;
+            line-height: 1.6;
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .close-popup-btn {
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .close-popup-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .name {
+                font-size: 1.8em;
+            }
+
+            .emoji-celebration {
+                font-size: 3em;
+            }
+
+            .timer {
+                gap: 10px;
+            }
+
+            .time-box {
+                padding: 15px 20px;
+                min-width: 80px;
+            }
+
+            .time-value {
+                font-size: 1.8em;
+            }
+
+            .modal-content {
+                width: 90%;
+                padding: 30px 20px;
+            }
+
+            .wish-text {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stars" id="stars"></div>
+
+    <!-- Wish Popup Modal -->
+    <div id="wishModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="wish-text" id="wishText">🌟 Lời Chúc Tốt Đẹp 🌟</div>
+            <button class="close-popup-btn" onclick="closeModal()">Đóng</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🎂 CHÚC MỪNG SINH NHẬT 🎂</h1>
+            <div class="emoji-celebration">✨</div>
+            <div class="name">Trần Tường Vi</div>
+        </div>
+
+        <!-- Messages -->
+        <div class="messages">
+            <h2>💝 Những Lời Chúc Tốt Đẹp 💝</h2>
+            <div class="message-item">
+                Chúc bạn một ngày sinh nhật tuyệt vời, tràn đầy niềm vui, tiếng cười và những khoảnh khắc đáng nhớ!
+            </div>
+            <div class="message-item">
+                Tuổi mới mang đến những cơ hội mới, những thành công mới và những hạnh phúc chưa từng có!
+            </div>
+            <div class="message-item">
+                Chúc bạn luôn xinh đẹp, rạng rỡ, sáng tạo và không bao giờ bỏ cuộc trong cuộc sống.
+            </div>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="countdown">
+            <h3>⏰ Bao lâu nữa đến tiệc sinh nhật? ⏰</h3>
+            <div class="timer">
+                <div class="time-box">
+                    <span class="time-value" id="days">0</span>
+                    <div class="time-label">Ngày</div>
+                </div>
+                <div class="time-box">
+                    <span class="time-value" id="hours">0</span>
+                    <div class="time-label">Giờ</div>
+                </div>
+                <div class="time-box">
+                    <span class="time-value" id="minutes">0</span>
+                    <div class="time-label">Phút</div>
+                </div>
+                <div class="time-box">
+                    <span class="time-value" id="seconds">0</span>
+                    <div class="time-label">Giây</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery of Emojis -->
+        <div class="gallery">
+            <h3>🎉 Bữa Tiệc Vui Vẻ 🎉</h3>
+            <div class="emoji-grid">
+                <div class="emoji-item">🎁</div>
+                <div class="emoji-item">🎈</div>
+                <div class="emoji-item">🎊</div>
+                <div class="emoji-item">🍰</div>
+                <div class="emoji-item">🌹</div>
+                <div class="emoji-item">💐</div>
+                <div class="emoji-item">⭐</div>
+                <div class="emoji-item">🌟</div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 my-8">
+            <button onclick="createConfetti()" class="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+                <i class="fas fa-fire"></i> 🎆 Pháo Hoa!
+            </button>
+            <button onclick="playMusic()" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+                <i class="fas fa-music"></i> 🎵 Nhạc Vui
+            </button>
+            <button onclick="generateWish()" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+                <i class="fas fa-heart"></i> 💌 Lời Chúc
+            </button>
+        </div>
+
+        <!-- Extra Effects Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 my-8">
+            <button onclick="createParticleBurst(event)" class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+                <i class="fas fa-star"></i> ✨ Particle Burst
+            </button>
+            <button onclick="createFloatingStars()" class="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+                <i class="fas fa-stars"></i> 🌟 Floating Stars
+            </button>
+            <button onclick="createFireworks()" class="bg-gradient-to-r from-indigo-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-full transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl text-base md:text-lg flex items-center gap-2">
+                <i class="fas fa-burst"></i> 💥 Fireworks
+            </button>
+        </div>
+
+        <!-- Photo Album Section -->
+        <div class="wishes-section">
+            <h3>📸 Album Ảnh Kỷ Niệm 📸</h3>
+
+            <!-- Default photos -->
+            <div class="mt-6">
+                <h4 class="text-lg font-bold text-gray-700 mb-4">✨ Những Ảnh Đẹp</h4>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
+                        <div class="bg-gradient-to-br from-pink-400 to-red-400 w-full h-40 flex items-center justify-center text-5xl">🎂</div>
+                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Bánh Sinh Nhật</p>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
+                        <div class="bg-gradient-to-br from-purple-400 to-pink-400 w-full h-40 flex items-center justify-center text-5xl">🎉</div>
+                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Tiệc Vui</p>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
+                        <div class="bg-gradient-to-br from-blue-400 to-purple-400 w-full h-40 flex items-center justify-center text-5xl">🌹</div>
+                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Hoa Tặng</p>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
+                        <div class="bg-gradient-to-br from-yellow-400 to-orange-400 w-full h-40 flex items-center justify-center text-5xl">🎁</div>
+                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Quà Tặng</p>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
+                        <div class="bg-gradient-to-br from-green-400 to-blue-400 w-full h-40 flex items-center justify-center text-5xl">✨</div>
+                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Kỷ Niệm</p>
+                    </div>
+                    <div class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="enlargePhoto(this)">
+                        <div class="bg-gradient-to-br from-red-400 to-pink-400 w-full h-40 flex items-center justify-center text-5xl">💝</div>
+                        <p class="text-center text-sm py-3 font-semibold text-gray-700 bg-gray-50">Tình Yêu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wishes Section -->
+        <div class="wishes-section">
+            <h3>🌟 Những Điều Kỳ Vọng 🌟</h3>
+            <div id="wishes-container">
+                <div class="wish" onclick="this.style.backgroundColor='#fff9e6'; this.style.transform='scale(1.02)';">
+                    Mong bạn luôn có tình yêu, sự quan tâm từ những người thân yêu.
+                </div>
+                <div class="wish">
+                    Chúc bạn thành công trong mọi dự án, mọi ước mơ của mình.
+                </div>
+                <div class="wish">
+                    Mong bạn được hạnh phúc và sống trọn vẹn từng khoảnh khắc.
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>✨ Tạo bởi ❤️ Với yêu thương và lời chúc tốt đẹp ✨</p>
+            <p>🎂 Chúc mừng sinh nhật bạn! 🎂</p>
+        </div>
+    </div>
+
+    <script>
+        // Create confetti effect - IMPROVED
+        function createConfetti() {
+            const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2', '#FF69B4', '#FFD700'];
+
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+
+                // Random position
+                const xPos = Math.random() * window.innerWidth;
+                confetti.style.left = xPos + 'px';
+                confetti.style.top = '-10px';
+
+                // Random size
+                const size = Math.random() * 10 + 5;
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+
+                // Random color
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                // Random duration
+                const duration = Math.random() * 2 + 2;
+                confetti.style.animation = `confettiFall ${duration}s ease-in forwards`;
+
+                // Random delay
+                confetti.style.animationDelay = (Math.random() * 0.3) + 's';
+
+                document.body.appendChild(confetti);
+
+                // Remove after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, duration * 1000 + 300);
+            }
+        }
+
+        // Play birthday song - HAPPY BIRTHDAY
+        function playMusic() {
+            const audioContext = new(window.AudioContext || window.webkitAudioContext)();
+
+            // Bài hát "Happy Birthday" - Giai điệu đầy đủ
+            const notes = [
+                // Happy Birthday giai điệu gốc
+                {
+                    freq: 261.63,
+                    duration: 0.5
+                }, // C - "Happy"
+                {
+                    freq: 261.63,
+                    duration: 0.5
+                }, // C - "Birthday"
+                {
+                    freq: 293.66,
+                    duration: 1.0
+                }, // D - "to"
+                {
+                    freq: 261.63,
+                    duration: 1.0
+                }, // C - "you"
+                {
+                    freq: 329.63,
+                    duration: 1.0
+                }, // E - "Happy"
+                {
+                    freq: 392.00,
+                    duration: 2.0
+                }, // G - "Birthday"
+
+                // Break nhỏ
+                {
+                    freq: 0,
+                    duration: 0.3
+                },
+
+                // Tiếp tục
+                {
+                    freq: 261.63,
+                    duration: 0.5
+                }, // C - "Happy"
+                {
+                    freq: 261.63,
+                    duration: 0.5
+                }, // C - "Birthday"
+                {
+                    freq: 293.66,
+                    duration: 1.0
+                }, // D - "to"
+                {
+                    freq: 261.63,
+                    duration: 1.0
+                }, // C - "you"
+                {
+                    freq: 349.23,
+                    duration: 1.0
+                }, // F - "Happy"
+                {
+                    freq: 329.63,
+                    duration: 2.0
+                }, // E - "Birthday"
+
+                // Break nhỏ
+                {
+                    freq: 0,
+                    duration: 0.3
+                },
+
+                // Phần cuối
+                {
+                    freq: 261.63,
+                    duration: 0.5
+                }, // C - "Happy"
+                {
+                    freq: 261.63,
+                    duration: 0.5
+                }, // C - "Birthday"
+                {
+                    freq: 523.25,
+                    duration: 1.0
+                }, // C5 - "to"
+                {
+                    freq: 392.00,
+                    duration: 1.0
+                }, // G - "you"
+                {
+                    freq: 349.23,
+                    duration: 1.0
+                }, // F - "dear"
+                {
+                    freq: 329.63,
+                    duration: 1.0
+                }, // E - "[name]"
+                {
+                    freq: 293.66,
+                    duration: 2.0
+                } // D - "Happy Birthday"
+            ];
+
+            let currentTime = audioContext.currentTime;
+
+            notes.forEach(note => {
+                if (note.freq === 0) {
+                    // Silence (rest)
+                    currentTime += note.duration;
+                    return;
+                }
+
+                const oscillator = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+
+                oscillator.connect(gain);
+                gain.connect(audioContext.destination);
+
+                oscillator.frequency.value = note.freq;
+                oscillator.type = 'sine';
+
+                // Smooth attack and release
+                gain.gain.setValueAtTime(0, currentTime);
+                gain.gain.linearRampToValueAtTime(0.3, currentTime + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.01, currentTime + note.duration - 0.1);
+
+                oscillator.start(currentTime);
+                oscillator.stop(currentTime + note.duration);
+
+                currentTime += note.duration;
+            });
+        }
+
+        // Random wishes - POPUP VERSION
+        function generateWish() {
+            const wishes = [
+                '🎯 Hãy theo đuổi những ước mơ lớn nhất của bạn!',
+                '💪 Bạn mạnh hơn những gì bạn tưởng tượng!',
+                '🌈 Cuộc sống của bạn sẽ tràn đầy những sắc màu đẹp!',
+                '❤️ Tình yêu và sự quan tâm luôn bao quanh bạn!',
+                '🚀 Bạn sẽ đạt được những thành công lớn!',
+                '🌟 Bạn là ngôi sao trong đêm tối!',
+                '🎁 Mỗi ngày mới là một món quà quý báu!',
+                '💝 Bạn xứng đáng với tất cả những điều tốt đẹp!',
+                '🎊 Hôm nay là ngày của bạn, hãy tỏa sáng!',
+                '✨ Mỗi khoảnh khắc với bạn đều quý giá!'
+            ];
+            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+
+            // Show modal with wish
+            document.getElementById('wishText').textContent = randomWish;
+            document.getElementById('wishModal').style.display = 'block';
+
+            // Confetti effect khi hiển thị lời chúc
+            createConfetti();
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('wishModal').style.display = 'none';
+        }
+
+        // Click outside modal to close
+        window.onclick = function(event) {
+            const modal = document.getElementById('wishModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Enlarge Photo
+        function enlargePhoto(element) {
+            alert('📸 Ảnh kỷ niệm đẹp lắm! 💕');
+            createConfetti();
+        }
+
+        // Enlarge Photo
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const birthday = new Date(currentYear, 9, 22); // October 22
+
+            if (now > birthday) {
+                birthday.setFullYear(currentYear + 1);
+            }
+
+            const timeLeft = birthday - now;
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        // ============ PARTICLE BURST ============
+        function createParticleBurst(event) {
+            const x = event.clientX || window.innerWidth / 2;
+            const y = event.clientY || window.innerHeight / 2;
+            const colors = ['#FFD700', '#FFA500', '#FF69B4', '#00CED1', '#32CD32', '#FF6B6B', '#9370DB'];
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle-burst';
+
+                const angle = (i / particleCount) * Math.PI * 2;
+                const velocity = 100 + Math.random() * 200;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 1500);
+            }
+        }
+
+        // ============ FLOATING STARS ============
+        function createFloatingStars() {
+            const starCount = 15;
+            const starEmojis = ['⭐', '✨', '🌟', '💫', '🌠'];
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'floating-star';
+                star.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
+
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                const delay = Math.random() * 2;
+                const duration = 4 + Math.random() * 4;
+
+                star.style.left = x + 'px';
+                star.style.top = y + 'px';
+                star.style.animationDelay = delay + 's';
+                star.style.animationDuration = duration + 's';
+
+                document.body.appendChild(star);
+                setTimeout(() => star.remove(), (duration + delay) * 1000);
+            }
+        }
+
+        // ============ FIREWORKS ============
+        function createFireworks() {
+            const x = window.innerWidth / 2 + (Math.random() - 0.5) * 300;
+            const y = window.innerHeight / 2 - 200 + Math.random() * 100;
+            const colors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#9400D3', '#FF69B4'];
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+
+                const angle = (i / particleCount) * Math.PI * 2;
+                const velocity = 120 + Math.random() * 250;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.setProperty('--tx', tx + 'px');
+                firework.style.setProperty('--ty', ty + 'px');
+
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1800);
+            }
+
+            // Create multiple bursts
+            setTimeout(() => createFireworks(), 500);
+        }
+
+        let bgParticlesActive = false;
+        let bgParticleInterval;
+
+        // ============ BACKGROUND PARTICLES ============
+        function toggleBgParticles() {
+            bgParticlesActive = !bgParticlesActive;
+
+            if (bgParticlesActive) {
+                // Create initial particles
+                for (let i = 0; i < 20; i++) {
+                    createBgParticle();
+                }
+
+                // Add more particles periodically
+                bgParticleInterval = setInterval(() => {
+                    createBgParticle();
+                }, 500);
+            } else {
+                clearInterval(bgParticleInterval);
+                document.querySelectorAll('.bg-particle').forEach(p => p.remove());
+            }
+        }
+
+        function createBgParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'bg-particle';
+
+            const startX = Math.random() * window.innerWidth;
+            const startY = Math.random() * window.innerHeight;
+            const endX = (Math.random() - 0.5) * 400;
+            const endY = (Math.random() - 0.5) * 400 - 300;
+            const duration = 15 + Math.random() * 10;
+
+            particle.style.left = startX + 'px';
+            particle.style.top = startY + 'px';
+            particle.style.setProperty('--tx', endX + 'px');
+            particle.style.setProperty('--ty', endY + 'px');
+            particle.style.animationDuration = duration + 's';
+
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), duration * 1000);
+        }
+
+        let cursorTrailActive = false;
+
+        // ============ CURSOR TRAIL ============
+        function toggleCursorTrail() {
+            cursorTrailActive = !cursorTrailActive;
+
+            if (cursorTrailActive) {
+                document.addEventListener('mousemove', createCursorTrail);
+            } else {
+                document.removeEventListener('mousemove', createCursorTrail);
+                document.querySelectorAll('.cursor-trail').forEach(t => t.remove());
+            }
+        }
+
+        function createCursorTrail(event) {
+            if (Math.random() < 0.3) { // Only create 30% of the time to avoid too many
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+
+                const colors = ['#FFD700', '#FF69B4', '#00CED1', '#32CD32', '#FF6B6B', '#9370DB', '#FFA500'];
+                const size = Math.random() * 8 + 4;
+
+                trail.style.left = event.clientX + 'px';
+                trail.style.top = event.clientY + 'px';
+                trail.style.width = size + 'px';
+                trail.style.height = size + 'px';
+                trail.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                document.body.appendChild(trail);
+                setTimeout(() => trail.remove(), 1000);
+            }
+        }
+
+        // Initialize
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Auto confetti on page load - Multiple waves
+        setTimeout(() => {
+            createConfetti();
+        }, 500);
+
+        setTimeout(() => {
+            createConfetti();
+        }, 1200);
+
+        setTimeout(() => {
+            createConfetti();
+        }, 1900);
+
+        // Auto play music on page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                playMusic();
+            }, 1500);
+        });
+
+        // Auto enable cursor trail on page load
+        cursorTrailActive = true;
+        document.addEventListener('mousemove', createCursorTrail);
+
+        // Auto enable background particles on page load
+        bgParticlesActive = true;
+        for (let i = 0; i < 20; i++) {
+            createBgParticle();
+        }
+        bgParticleInterval = setInterval(() => {
+            createBgParticle();
+        }, 500);
+    </script>
+</body>
+
+</html>
