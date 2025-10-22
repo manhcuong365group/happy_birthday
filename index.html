@@ -392,6 +392,89 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .wish-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .wish-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+            pointer-events: none;
+        }
+
+        .wish-card:hover::before {
+            left: 100%;
+        }
+
+        .wish-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+        }
+
+        .wish-card.color1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .wish-card.color2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .wish-card.color3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .wish-card.color4 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+        }
+
+        .wish-card.color5 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: #333;
+        }
+
+        .wish-card.color6 {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+            color: white;
+        }
+
+        .wish-card p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            font-style: italic;
+            margin: 0;
+        }
+
         .footer {
             text-align: center;
             color: #999;
@@ -508,6 +591,23 @@
             100% {
                 opacity: 1;
                 transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
             }
         }
 
@@ -698,16 +798,16 @@
             </button>
         </div>
 
-        <div class="wish" onclick="this.style.backgroundColor='#fff9e6'; this.style.transform='scale(1.02)';">
-            Mong bạn luôn có tình yêu, sự quan tâm từ những người thân yêu.
+        <!-- Wishes Wall Section -->
+        <div class="wishes-section">
+            <h3>💝 Bức Tường Lời Chúc 💝</h3>
+            <p class="text-center text-gray-600 mb-6 text-sm md:text-base">Hover hoặc click vào các lời chúc để xem chi
+                tiết ✨</p>
+
+            <div class="wishes-grid" id="wishesGrid">
+                <!-- Wishes will be generated here by JavaScript -->
+            </div>
         </div>
-        <div class="wish">
-            Chúc bạn thành công trong mọi dự án, mọi ước mơ của mình.
-        </div>
-        <div class="wish">
-            Mong bạn được hạnh phúc và sống trọn vẹn từng khoảnh khắc.
-        </div>
-    </div>
     </div>
 
     <div class="footer">
@@ -718,6 +818,49 @@
 
     <script>
         // ============ DECLARE GLOBAL VARIABLES ============
+
+        // Wishes Wall Data
+        const wishes = [
+            "Chúc bạn luôn tìm thấy niềm vui trong những điều nhỏ bé. 🌸",
+            "Mong bạn có sức khỏe dồi dào và một tâm hồn thanh tịnh. 💪",
+            "Chúc bạn thành công trong mọi dự án và ước mơ của mình. 🚀",
+            "Mong bạn được bao quanh bởi tình yêu và sự quan tâm. 💕",
+            "Chúc bạn có một năm đầy những bất ngờ tuyệt vời. ✨",
+            "Mong bạn sống trọn vẹn từng khoảnh khắc quý báu. ⏳",
+            "Chúc bạn luôn có laughter và smile trên khuôn mặt. 😊",
+            "Mong bạn đạt được tất cả những gì bạn mong muốn. 🎯",
+            "Chúc bạn có một hành trình cuộc sống đầy màu sắc. 🌈",
+            "Mong bạn luôn yêu thương chính mình trước tiên. 💖",
+            "Chúc bạn có những bạn bè thật sự bên cạnh. 👯",
+            "Mong bạn không bao giờ ngừng mơ mộng và sáng tạo. 🎨",
+            "Chúc bạn có đủ sức để vượt qua mọi thử thách. 💪",
+            "Mong bạn tìm thấy hạnh phúc ở chính những điều giản dị. 🌿",
+            "Chúc bạn một tuổi đẹp, khỏe và an yên! 🎂"
+        ];
+
+        // Initialize Wishes Wall
+        function initWishesWall() {
+            const wishesGrid = document.getElementById('wishesGrid');
+            const colors = ['color1', 'color2', 'color3', 'color4', 'color5', 'color6'];
+
+            wishes.forEach((wish, index) => {
+                const wishCard = document.createElement('div');
+                const colorClass = colors[index % colors.length];
+                wishCard.className = `wish-card ${colorClass}`;
+                wishCard.innerHTML = `<p>${wish}</p>`;
+
+                // Add flip animation on hover
+                wishCard.addEventListener('click', function () {
+                    this.style.animation = 'none';
+                    setTimeout(() => {
+                        this.style.animation = 'pulse 0.5s ease-out';
+                    }, 10);
+                    createConfetti();
+                });
+
+                wishesGrid.appendChild(wishCard);
+            });
+        }
 
         // Create confetti effect - IMPROVED
         function createConfetti() {
@@ -1113,6 +1256,7 @@
         // Initialize
         updateCountdown();
         setInterval(updateCountdown, 1000);
+        initWishesWall();
 
         // Auto confetti on page load - Multiple waves
         setTimeout(() => {
