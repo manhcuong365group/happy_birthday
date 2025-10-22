@@ -7,6 +7,9 @@
     <title>Chúc Mừng Sinh Nhật Trần Tường Vi 🎉</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js"></script>
     <style>
         * {
             margin: 0;
@@ -701,13 +704,18 @@
         <!-- Guestbook Section -->
         <div class="wishes-section">
             <h3>� Sổ Lưu Bút Chúc Mừng �</h3>
-            
+
             <!-- Input area for new message -->
             <div class="mt-6 mb-6">
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <input type="text" id="guestName" placeholder="Tên của bạn 💕" class="w-full p-3 border-2 border-purple-300 rounded-lg mb-3 focus:outline-none focus:border-purple-600" maxlength="50">
-                    <textarea id="guestMessage" placeholder="Viết lời chúc cho Trần Tường Vi ✨" class="w-full p-3 border-2 border-purple-300 rounded-lg mb-3 focus:outline-none focus:border-purple-600 resize-none" rows="3" maxlength="150"></textarea>
-                    <button onclick="addGuestMessage()" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-2 px-4 rounded-lg transform hover:scale-105 transition-all duration-300">
+                    <input type="text" id="guestName" placeholder="Tên của bạn 💕"
+                        class="w-full p-3 border-2 border-purple-300 rounded-lg mb-3 focus:outline-none focus:border-purple-600"
+                        maxlength="50">
+                    <textarea id="guestMessage" placeholder="Viết lời chúc cho Trần Tường Vi ✨"
+                        class="w-full p-3 border-2 border-purple-300 rounded-lg mb-3 focus:outline-none focus:border-purple-600 resize-none"
+                        rows="3" maxlength="150"></textarea>
+                    <button onclick="addGuestMessage()"
+                        class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-2 px-4 rounded-lg transform hover:scale-105 transition-all duration-300">
                         <i class="fas fa-heart"></i> Ghi Vào Sổ
                     </button>
                 </div>
@@ -745,6 +753,22 @@
     </div>
 
     <script>
+        // ============ FIREBASE CONFIG ============
+        const firebaseConfig = {
+            apiKey: "AIzaSyAJ7nObh30G2Hd--mSzUDWUiwtWyZseXAY",
+            authDomain: "happy-birthday-2bcc7.firebaseapp.com",
+            databaseURL: "https://happy-birthday-2bcc7-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "happy-birthday-2bcc7",
+            storageBucket: "happy-birthday-2bcc7.firebasestorage.app",
+            messagingSenderId: "241314367880",
+            appId: "1:241314367880:web:69e3a25337c7d66213123d",
+            measurementId: "G-P2FTLG33C6"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
         // Create confetti effect - IMPROVED
         function createConfetti() {
             const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2', '#FF69B4', '#FFD700'];
@@ -1105,7 +1129,7 @@
 
         let cursorTrailActive = false;
 
-        // ============ GUESTBOOK ============
+        // ============ GUESTBOOK WITH FIREBASE ============
         let guestMessages = [];
 
         function addGuestMessage() {
@@ -1121,62 +1145,93 @@
             const guestMessage = {
                 name: name,
                 message: message,
-                time: new Date().toLocaleString('vi-VN')
+                time: new Date().toLocaleString('vi-VN'),
+                timestamp: Date.now()
             };
 
-            // Add to array
-            guestMessages.unshift(guestMessage);
+            // Save to Firebase
+            database.ref('guestbook').push(guestMessage).then(() => {
+                // Clear inputs
+                document.getElementById('guestName').value = '';
+                document.getElementById('guestMessage').value = '';
 
-            // Save to localStorage
-            localStorage.setItem('guestMessages', JSON.stringify(guestMessages));
-
-            // Clear inputs
-            document.getElementById('guestName').value = '';
-            document.getElementById('guestMessage').value = '';
-
-            // Refresh display
-            displayGuestMessages();
-
-            // Confetti effect
-            createConfetti();
-            alert('✨ Cảm ơn bạn đã ghi lời chúc! ✨');
+                // Confetti effect
+                createConfetti();
+                alert('✨ Cảm ơn bạn đã ghi lời chúc! ✨');
+            }).catch((error) => {
+                alert('❌ Lỗi khi lưu lời chúc: ' + error.message);
+            });
         }
 
         function displayGuestMessages() {
             const container = document.getElementById('guestbookMessages');
-            container.innerHTML = '';
+            container.innerHTML = '<p class="text-center text-gray-500 py-6">⏳ Đang tải lời chúc...</p>';
 
-            if (guestMessages.length === 0) {
-                container.innerHTML = '<p class="text-center text-gray-500 py-6">Chưa có lời chúc nào. Hãy là người đầu tiên! 💫</p>';
-                return;
-            }
+            // Read from Firebase
+            database.ref('guestbook').orderByChild('timestamp').on('value', (snapshot) => {
+                container.innerHTML = '';
+                const messages = [];
 
-            guestMessages.forEach((msg, index) => {
-                const msgElement = document.createElement('div');
-                msgElement.className = 'bg-white p-4 rounded-lg shadow-md border-l-4 border-pink-400 hover:shadow-lg transition-all duration-300';
-                msgElement.innerHTML = `
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <p class="font-bold text-purple-600 text-lg">👤 ${msg.name}</p>
-                            <p class="text-xs text-gray-500">${msg.time}</p>
+                snapshot.forEach((childSnapshot) => {
+                    messages.unshift({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    });
+                });
+
+                if (messages.length === 0) {
+                    container.innerHTML = '<p class="text-center text-gray-500 py-6">Chưa có lời chúc nào. Hãy là người đầu tiên! 💫</p>';
+                    return;
+                }
+
+                messages.forEach((msg) => {
+                    const msgElement = document.createElement('div');
+                    msgElement.className = 'bg-white p-4 rounded-lg shadow-md border-l-4 border-pink-400 hover:shadow-lg transition-all duration-300 animate-fadeIn';
+                    msgElement.innerHTML = `
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <p class="font-bold text-purple-600 text-lg">👤 ${msg.name}</p>
+                                <p class="text-xs text-gray-500">${msg.time}</p>
+                            </div>
+                            <button onclick="deleteGuestMessage('${msg.id}')" class="text-red-500 hover:text-red-700 text-sm" title="Xóa">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </div>
-                        <button onclick="deleteGuestMessage(${index})" class="text-red-500 hover:text-red-700 text-sm" title="Xóa">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                    <p class="text-gray-700 italic">"${msg.message}"</p>
-                `;
-                container.appendChild(msgElement);
+                        <p class="text-gray-700 italic">"${msg.message}"</p>
+                    `;
+                    container.appendChild(msgElement);
+                });
             });
         }
 
-        function deleteGuestMessage(index) {
+        function deleteGuestMessage(messageId) {
             if (confirm('Bạn chắc chắn muốn xóa lời chúc này?')) {
-                guestMessages.splice(index, 1);
-                localStorage.setItem('guestMessages', JSON.stringify(guestMessages));
-                displayGuestMessages();
+                database.ref('guestbook').child(messageId).remove().then(() => {
+                    alert('✓ Đã xóa lời chúc');
+                }).catch((error) => {
+                    alert('❌ Lỗi: ' + error.message);
+                });
             }
         }
+
+        // Add fade-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .animate-fadeIn {
+                animation: fadeIn 0.5s ease-out;
+            }
+        `;
+        document.head.appendChild(style);
 
         // ============ CURSOR TRAIL ============
         function toggleCursorTrail() {
@@ -1246,11 +1301,7 @@
             createBgParticle();
         }, 500);
 
-        // Load guestbook messages from localStorage
-        const savedMessages = localStorage.getItem('guestMessages');
-        if (savedMessages) {
-            guestMessages = JSON.parse(savedMessages);
-        }
+        // Load guestbook messages from Firebase
         displayGuestMessages();
     </script>
 </body>
